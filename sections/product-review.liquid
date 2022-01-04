@@ -1,0 +1,126 @@
+<style>
+    .button1 {
+        margin-top: 30px;
+        width: 200px;
+        height: 50px;
+        background-color: {{ section.settings.btn_color }};
+        border: none;
+        border-radius: 5px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+</style>
+
+<div class="back">
+    <div class="container sixth_pad">
+        <p class="six_p">{{ section.settings.review_title }}</p>
+        <p class="spoon">{{ section.settings.middle_title }}</p>
+        {% for block in section.blocks %}
+        <div class="star">
+            {% for i in (1..block.settings.marks) %}
+            <i class="fas fa-star"></i>
+            {% endfor %}
+        </div>
+        <p class="mb-0">{{ block.settings.topic }}</p>
+        <p class="solana">{{ block.settings.author }}</p>
+        <p class="cacao_padding">{{ block.settings.content }}</p>
+        {% if forloop.last != true %}
+        <hr class="hr">
+        {% endif %}
+        {% endfor %}
+        <div class="text-center">
+            <button class="button1">{{ section.settings.btn_txt }}</button>
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+{
+"name":"Review",
+"max_blocks":5,
+"settings":[
+{
+"type":"header",
+"content":"Title"
+},
+{
+"type":"text",
+"id":"review_title",
+"label":"Edit title",
+"default":"Customer Reviews"
+},
+{
+"type":"font",
+"id":"title_font",
+"label":"Choose Font"
+},
+{
+"type":"header",
+"content":"Middle Title"
+},
+{
+"type":"text",
+"id":"middle_title",
+"label":"Edit title",
+"default":"Customer Reviews"
+},
+{
+"type":"font",
+"id":"middle_font",
+"label":"Choose Font"
+},
+{
+"type":"header",
+"content":"Button"
+},
+{
+"type":"text",
+"id":"btn_txt",
+"label":"Edit Button Title",
+"default":"Read More"
+},
+{
+"type":"color",
+"id":"btn_color",
+"label":"Choose Button Color",
+"default":"#755F3D"
+}
+],
+"blocks":[
+{
+"name":"Review_Group",
+"type":"txt_group",
+"settings":[
+{
+"type":"number",
+"id":"marks",
+"label":"Select mark",
+"default":5
+},
+{
+"type":"text",
+"id":"topic",
+"label":"Write Subheading",
+"default":"Please Write."
+},
+{
+"type":"text",
+"id":"author",
+"label":"Write Author",
+"default":"Please Write."
+},
+{
+"type":"textarea",
+"id":"content",
+"label":"Write Content",
+"default":"Please Write."
+}
+]
+}
+]
+}
+{% endschema %}

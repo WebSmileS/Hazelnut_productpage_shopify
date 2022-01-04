@@ -1,0 +1,44 @@
+<div class="back2">
+    <div class="row fifth_pad text-center">
+        <div class="fw img-item">
+            <img src="{{ section.settings.first_brand_image | img_url:'800x' }}">
+        </div>
+        <div class="pw img-item">
+            <img src="{{ section.settings.second_brand_image | img_url:'800x' }}">
+        </div>
+        <div class="tt img-item">
+            <img src="{{ section.settings.third_brand_image | img_url:'800x' }}">
+        </div>
+        <div class="fb img-item">
+            <img src="{{ section.settings.fourth_brand_image | img_url:'800x' }}">
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+"name":"Brand",
+"settings":[
+{
+"type":"image_picker",
+"id":"first_brand_image",
+"label":"Choose Image"
+},
+{
+"type":"image_picker",
+"id":"second_brand_image",
+"label":"Choose Image"
+},
+{
+"type":"image_picker",
+"id":"third_brand_image",
+"label":"Choose Image"
+},
+{
+"type":"image_picker",
+"id":"fourth_brand_image",
+"label":"Choose Image"
+}
+]
+}
+{% endschema %}

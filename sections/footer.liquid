@@ -1,0 +1,326 @@
+{% assign set = section.settings %}
+{% if linklists[set.footer_link_list].links.size > 0 %}
+    {% assign footer_linklist_count = linklists[set.footer_link_list].links.size %}
+{% endif %}
+{% if
+        settings.social_twitter_link != blank
+        or settings.social_facebook_link != blank
+        or settings.social_pinterest_link != blank
+        or settings.social_google_plus_link != blank
+        or settings.social_instagram_link != blank
+        or settings.social_tumblr_link != blank
+        or settings.social_youtube_link != blank
+        or settings.social_vimeo_link != blank
+        or settings.social_fancy_link != blank
+        or settings.social_snapchat_link != blank
+%}
+    {% assign footer_social_enable = true %}
+{% endif %}
+
+<div class="last">
+    <div class="row last-pad">
+        {% if linklists[set.footer_link_list].links.size > 0 %}
+            <div class="groo_div">
+                <ul>
+                    {% for link in linklists[set.footer_link_list].links %}
+                        <li id="y"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <div id="u">
+            <p>{{ set.last_description }}</p>
+        </div>
+    </div>
+    <hr id="i">
+    <div class="img_pad">
+        {% if section.settings.show_payment_icons %}
+            {% unless shop.enabled_payment_types == empty %}
+                <div>
+                    <ul>
+                        {% for type in shop.enabled_payment_types %}
+                            <li>
+                                {{ type | payment_type_svg_tag: class: 'icon' }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endunless %}
+        {% endif %}
+        <div
+        <i class="fas fa-camera cameratheme"></i>
+        <i class="fab fa-facebook-square cameratheme"></i><br>
+        <div class="text-right">
+            <p class="llast"><i class="far fa-copyright"></i>2021, Groovy Butter Powered by Shopify</p>
+        </div>
+    </div>
+</div>
+
+
+<footer class="site-footer small--text-center" role="contentinfo" data-section-id="{{ section.id }}"
+        data-section-type="footer-section">
+    <div class="wrapper">
+
+        <div class="grid-uniform">
+            {% if footer_social_enable %}
+                <div class="grid__item {{ footer_column_width }}">
+                    <ul class="no-bullets social-icons">
+                        {% if settings.social_facebook_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_facebook_link | escape }}"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                                    <span class="icon icon-facebook" aria-hidden="true"></span>
+                                    Facebook
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if settings.social_twitter_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_twitter_link | escape }}"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                                    <span class="icon icon-twitter" aria-hidden="true"></span>
+                                    Twitter
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if settings.social_pinterest_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_pinterest_link | escape }}"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                                    <span class="icon icon-pinterest" aria-hidden="true"></span>
+                                    Pinterest
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if settings.social_instagram_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_instagram_link | escape }}"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                                    <span class="icon icon-instagram" aria-hidden="true"></span>
+                                    Instagram
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if settings.social_snapchat_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_snapchat_link | escape }}"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                                    <span class="icon icon-snapchat" aria-hidden="true"></span>
+                                    Snapchat
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if settings.social_google_plus_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_google_plus_link | escape }}" rel="publisher"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
+                                    <span class="icon icon-google_plus" aria-hidden="true"></span>
+                                    Google Plus
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if settings.social_tumblr_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_tumblr_link | escape }}"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                                    <span class="icon icon-tumblr" aria-hidden="true"></span>
+                                    Tumblr
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if settings.social_youtube_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_youtube_link | escape }}"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                                    <span class="icon icon-youtube" aria-hidden="true"></span>
+                                    YouTube
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if settings.social_vimeo_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_vimeo_link | escape }}"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                                    <span class="icon icon-vimeo" aria-hidden="true"></span>
+                                    Vimeo
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if settings.social_fancy_link != blank %}
+                            <li>
+                                <a href="{{ settings.social_fancy_link | escape }}"
+                                   title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+                                    <span class="icon icon-fancy" aria-hidden="true"></span>
+                                    Fancy
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            {%- liquid
+                assign selectors_form_class = "selectors-form"
+
+                if num_footer_columns == 1
+                    assign selectors_form_class = "selectors-form selectors-form--single-column"
+                endif
+            -%}
+
+            <div class="grid__item {{ footer_column_width }} {% if num_footer_columns == 1 %}text-center{% else %}large--text-right{% endif %}">
+                {%- form 'localization', class: selectors_form_class -%}
+                    {%- if country_selector -%}
+                        <div class="selectors-form__item">
+                            <h2 class="visually-hidden" id="country-heading">
+                                {{ 'general.country.dropdown_label' | t }}
+                            </h2>
+                            {%- assign current_currency_symbol = localization.country.currency.symbol -%}
+                            {%- assign current_currency_iso_code = localization.country.currency.iso_code -%}
+                            <div class="disclosure" data-disclosure-country>
+                                <button type="button" class="disclosure__toggle" aria-expanded="false"
+                                        aria-controls="country-list" aria-describedby="country-heading"
+                                        data-disclosure-toggle>
+                                    {%- if current_currency_symbol -%}
+                                        {{ localization.country.name }} ({{ current_currency_iso_code }} {{ current_currency_symbol }})
+                                    {%- else -%}
+                                        {{ localization.country.name }} ({{ current_currency_iso_code }})
+                                    {%- endif -%}
+                                </button>
+                                <ul id="country-list" class="disclosure-list" data-disclosure-list>
+                                    {% for country in localization.available_countries %}
+                                        {%- assign currency_symbol = country.currency.symbol -%}
+                                        {%- assign currency_iso_code = country.currency.iso_code -%}
+                                        <li class="disclosure-list__item {% if country.iso_code == localization.country.iso_code %}disclosure-list__item--current{% endif %}">
+                                            <a class="disclosure-list__option" href="#"
+                                               {% if country.iso_code == localization.country.iso_code %}aria-current="true"{% endif %}
+                                               data-value="{{ country.iso_code }}" data-disclosure-option>
+                                                {%- if currency_symbol -%}
+                                                    {{ country.name }} ({{ currency_iso_code }} {{ currency_symbol }})
+                                                {%- else -%}
+                                                    {{ country.name }} ({{ currency_iso_code }})
+                                                {%- endif -%}
+                                            </a>
+                                        </li>
+                                    {%- endfor -%}
+                                </ul>
+                                <input type="hidden" name="country_code" id="CountrySelector"
+                                       value="{{ localization.country.iso_code }}" data-disclosure-input/>
+                            </div>
+                        </div>
+                    {%- endif -%}
+
+                    {%- if locale_selector -%}
+                        <div class="selectors-form__item">
+                            <h2 class="visually-hidden" id="lang-heading">
+                                {{ 'general.language.dropdown_label' | t }}
+                            </h2>
+
+                            <div class="disclosure" data-disclosure-locale>
+                                <button type="button" class="disclosure__toggle" aria-expanded="false"
+                                        aria-controls="lang-list" aria-describedby="lang-heading"
+                                        data-disclosure-toggle>
+                                    {{ localization.language.endonym_name }}
+                                </button>
+                                <ul id="lang-list" class="disclosure-list" data-disclosure-list>
+                                    {%- for language in localization.available_languages -%}
+                                        <li class="disclosure-list__item {% if language.iso_code == localization.language.iso_code %}disclosure-list__item--current{% endif %}">
+                                            <a class="disclosure-list__option" href="#" lang="{{ language.iso_code }}"
+                                               {% if language.iso_code == localization.language.iso_code %}aria-current="true"{% endif %}
+                                               data-value="{{ language.iso_code }}" data-disclosure-option>
+                                                {{ language.endonym_name }}
+                                            </a>
+                                        </li>
+                                    {%- endfor -%}
+                                </ul>
+                                <input type="hidden" name="locale_code" id="LocaleSelector"
+                                       value="{{ localization.language.iso_code }}" data-disclosure-input/>
+                            </div>
+                        </div>
+                    {%- endif -%}
+                {%- endform -%}
+
+                <p class="site-footer__copyright-content">&copy; {{ 'now' | date: '%Y' }}
+                    , {{ shop.name | link_to: routes.root_url }}<br>{{ powered_by_link }}</p>
+
+                {%- if section.settings.show_payment_icons -%}
+                    {%- unless shop.enabled_payment_types == empty -%}
+                        <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
+                        <ul class="inline-list payment-icons site-footer__payment-icons">
+                            {%- for type in shop.enabled_payment_types -%}
+                                <li>
+                                    {{ type | payment_type_svg_tag: class: 'icon' }}
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    {%- endunless -%}
+                {%- endif -%}
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+
+{% schema %}
+{
+"name": "Footer",
+"settings": [
+{
+"type": "header",
+"content": "Payment methods"
+},
+{
+"type": "checkbox",
+"id": "show_payment_icons",
+"label": "Show payment icons",
+"default": true
+},
+{
+"type":"image_picker",
+"id":"pay_image",
+"label":"Payment Image",
+}
+{
+"type": "header",
+"content": "Country/region Selector",
+"info": "To add a country/region, go to your [payment settings.](/admin/settings/payments)"
+},
+{
+"type": "checkbox",
+"id": "show_currency_selector",
+"label": "Show country/region selector",
+"default": true
+},
+{
+"type": "header",
+"content": "Language Selector",
+"info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+},
+{
+"type": "checkbox",
+"id": "show_locale_selector",
+"label": "Show language selector",
+"default": true
+},
+{
+"type": "header",
+"content": "Menu"
+},
+{
+"type": "link_list",
+"id": "footer_link_list",
+"label": "Footer menu",
+"default": "footer"
+},
+{
+"type":"header",
+"content":"Description"
+},
+{
+"type":"text",
+"id":"last_description",
+"label":"Edit description"
+}
+]
+}
+{% endschema %}

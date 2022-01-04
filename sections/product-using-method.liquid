@@ -1,0 +1,16 @@
+<div class="third_img">
+    <img style="width: 100%" src="{{ section.settings.using_method_image |
+    img_url:'2048x'}}">
+</div>
+{% schema %}
+{
+"name":"Using method",
+"settings":[
+{
+"type":"image_picker",
+"id":"using_method_image",
+"label":"Choose Image"
+}
+]
+}
+{% endschema %}

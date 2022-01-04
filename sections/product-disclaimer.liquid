@@ -1,0 +1,24 @@
+<div id="w">
+    <div class="disc">
+        <p id="e">{{ section.settings.d_heading }}</p>
+        <p>{{section.settings.d_content }}</p>
+    </div>
+</div>
+
+{% schema %}
+{
+"name":"Disclaimer",
+"settings":[
+{
+"type":"text",
+"id":"d_heading",
+"label":"Edit heading"
+},
+{
+"type":"text",
+"id":"d_content",
+"label":"Edit content"
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,134 @@
+<div class="back">
+    <div class="row back1">
+        <div class="divid_6">
+            <div class="forth_p">
+                {% for block in section.blocks %}
+                <button class="accordion" onclick="accord({{ forloop.index0 }})">{{ block.settings.group_btn_txt }}</button>
+                    {% assign block_number=forloop.index %}
+                    <div class="panel">
+                    <p>{{ block.settings.group_txt }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="divid_4">
+            {% for block in section.blocks %}
+            <div class="panel">
+                <p>{{ block.settings.group_txt }}</p>
+            </div>{% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+"name":"Product Information",
+"max_blocks":5,
+"settings":[
+{
+    "type":"color",
+    "id":"btn_txt_color",
+    "label":"Choose Button & Text Color",
+    "default":"#755F3D"
+},
+{
+"type":"font",
+"id":"btn_txt_font",
+"label":"Choose Button & Text Font"
+}
+],
+"blocks":[
+{
+"name":"Group",
+"type":"buttongroup",
+"settings":[
+{
+"type":"text",
+"id":"group_btn_txt",
+"label":"Edit Button",
+"default":"Uses & directions"
+},
+{
+"type":"textarea",
+"id":"group_txt",
+"label":"Edit Content",
+"default":"Please Edit Text"
+}
+]
+}
+]
+}
+{% endschema %}
+
+<script>
+    // accordion
+    window.addEventListener("resize", function () {
+        var i_num= {{ block_number }}
+        for (var i = 0; i < i_num ; i++) {
+            if (window.innerWidth < 650) {
+                document.getElementsByClassName("panel")[i].style.display = "flex";
+                document.getElementsByClassName("panel")[i+i_num].style.maxHeight = null;
+                document.getElementsByClassName("panel")[i + i_num].style.display = "none";
+                if (document.getElementsByClassName('accordion')[i].classList.contains('active')) {
+                    document.getElementsByClassName("panel")[i].style.maxHeight = document.getElementsByClassName("panel")[i].scrollHeight + "px";
+                }
+            }
+            else {
+                document.getElementsByClassName("panel")[i+i_num].style.display = "flex";
+                document.getElementsByClassName("panel")[i].style.display = "none";
+                document.getElementsByClassName("panel")[i].style.maxHeight = null;
+                if (document.getElementsByClassName('accordion')[i].classList.contains('active')) {
+                    document.getElementsByClassName("panel")[i + i_num].style.maxHeight = document.getElementsByClassName("panel")[i + i_num].scrollHeight + "px";
+                }
+            }
+        }
+    });
+
+    function accord(u) {
+        var i_num= {{ block_number }}
+        var acc = document.getElementsByClassName('accordion')[u];
+        var panel = document.getElementsByClassName("panel")[u];
+        var panel1 = document.getElementsByClassName("panel")[u + i_num];
+        if (window.innerWidth < 650) {
+            for (var i = 0; i < i_num; i++) {
+                document.getElementsByClassName('panel')[i].style.display = "flex";
+
+                if (i == u) {
+                    if (acc.classList.contains('active')) {
+                        acc.classList.remove('active');
+                        panel.style.maxHeight = null;
+                    }
+                    else {
+                        acc.classList.add('active');
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                }
+                else {
+                    document.getElementsByClassName('accordion')[i].classList.remove('active');
+                    document.getElementsByClassName('panel')[i].style.maxHeight = null;
+                }
+            }
+        }
+        else {
+            for (var i = 0; i < i_num; i++) {
+                document.getElementsByClassName('panel')[i + i_num].style.display = "flex";
+
+                if (i == u) {
+                    if (acc.classList.contains('active')) {
+                        acc.classList.remove('active');
+                        panel1.style.maxHeight = null;
+                    }
+                    else {
+                        acc.classList.add('active');
+                        panel1.style.maxHeight = panel1.scrollHeight + "px";
+                    }
+                }
+                else {
+                    document.getElementsByClassName('accordion')[i].classList.remove('active');
+                    document.getElementsByClassName('panel')[i + i_num].style.maxHeight = null;
+                }
+            }
+        }
+    }
+</script>

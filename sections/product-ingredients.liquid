@@ -1,0 +1,83 @@
+<!-- /sections/product-ingredients.liquid -->
+
+<style>
+    .lm_back {
+        background-color: {{section.settings.learn_more_btn_color}};
+    }
+</style>
+
+<div style="background-color: #FBF1E1;">
+    <div class="text-center second_part_div">
+        <div>
+            <img class="absolute_img1" src="{{ section.settings.img1 | img_url:"800x" }}"></div>
+        <div>
+            <img class="absolute_img2" src="{{ section.settings.img2 | img_url:"800x" }}"></div>
+        <div>
+            <img class="absolute_img3" src="{{ section.settings.img3 | img_url:"800x" }}"></div>
+        <div>
+            <img class="absolute_img4" src="{{ section.settings.img4 | img_url:"800x" }}"></div>
+        {% assign ingredient_array = section.settings.ingredient_text | split: "," %}
+        {% assign last = ingredient_array | last %}
+
+        <p class="second_part_p">
+            {% for ingredient in ingredient_array %}
+                {% if ingredient != last %}
+                    {{ ingredient }},<br>
+                {% else %}
+                    {{ ingredient }}
+                {% endif %}
+            {% endfor %}</p>
+        <button class="button1 lm_back">{{ section.settings.learn_more_btn_text }}</button>
+    </div>
+</div>
+
+
+{% schema %}
+{
+"name":"Ingredients",
+"settings":[
+{
+"type":"textarea",
+"id":"ingredient_text",
+"label":"Ingredient Text",
+"default":"Organic Hemp, Raw Peruvian Cacao, Raw Cashews, Italian Hazelnuts"
+},
+{
+"type":"image_picker",
+"id":"img1",
+"label":"First Image"
+},
+{
+"type":"image_picker",
+"id":"img2",
+"label":"Second Image"
+},
+{
+"type":"image_picker",
+"id":"img3",
+"label":"Third Image"
+},
+{
+"type":"image_picker",
+"id":"img4",
+"label":"Fourth Image"
+},
+{
+"type":"header",
+"content":"Customize Button"
+},
+{
+"type":"text",
+"id":"learn_more_btn_text",
+"label":"Button Text",
+"default":"Learn More"
+},
+{
+"type":"color",
+"id":"learn_more_btn_color",
+"label":"Choose Button Color",
+"default":"#755F3D"
+}
+]
+}
+{% endschema %}

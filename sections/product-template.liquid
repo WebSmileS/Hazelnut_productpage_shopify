@@ -1,0 +1,153 @@
+<!-- /templates/product.liquid -->
+
+<div style="background-color: #FBF1E1">
+    <div class="row" style="padding-top: 6em">
+        <div class="slick_div">
+            <div class="slick1" id="demo">
+                {%- for media in product.media -%}
+                    <div>
+                        <img src="{{ media | img_url:'800x'}}" class="car"/>
+                    </div>
+                {%- endfor -%}
+            </div>
+        </div>
+        <div class="slick_div">
+            <div>
+                <p class="gradient1">{{ product.title }}</p>
+            </div>
+            <div class="text-center" id="span">
+                <span><strong>{{ section.settings.display_capacity }}</strong></span>
+            </div>
+            <div>
+                <p class="pcl">{{ product.description }}</p>
+            </div>
+            <div class="ml-2">
+                <form class="tcolor">
+                    <p id="do40"><strong>{{ product.price | money}}</strong></p>
+                    <input class="mt" type="radio" name="a" checked><label>One time purchase:($40:00)</label><br>
+                    <input class="mt" type="radio" name="a"><label>Subscribe&Save(10%)</label>
+                    <div>
+                        <p class="p_padding"><span class="fas fa-check"></span>Choose Your Delivery Frequency</p>
+                        <p class="p_padding"><span class="fas fa-check"></span>Save Money With Every Delivery</p>
+                        <p class="p_padding"><span class="fas fa-check"></span>Easy Cancellation, Any Time</p>
+                    </div>
+                    <select id="country" name="country">
+                        <option value="australia">2-Pack(Save10%+Free Shipping)</option>
+                        <option value="canada">Canada</option>
+                        <option value="usa">USA</option>
+                    </select>
+                    <p>Free shipping on orders $40+</p>
+                    <button class="button">Add To Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+"name": "Product main pages",
+"settings": [
+{
+"type": "checkbox",
+"id": "product_vendor_enable",
+"label": "Show product vendor"
+},
+{
+"type": "checkbox",
+"id": "social_sharing_products",
+"label": "Enable product sharing",
+"default": true
+},
+{
+"type": "text",
+"id": "display_capacity",
+"label": "Display Capacity",
+"default": "16 SERVINGS CBD PER JAR"
+},
+{
+"type": "header",
+"content": "Product options form"
+},
+{
+"type": "checkbox",
+"id": "quantity_enabled",
+"label": "Show quantity picker"
+},
+{
+"type": "select",
+"id": "product_selector",
+"label": "Picker type",
+"options": [
+{
+"value": "radio",
+"label": "Button"
+},
+{
+"value": "select",
+"label": "Dropdown"
+}
+]
+},
+{
+"type": "header",
+"content": "Add to cart button"
+},
+{
+"type": "checkbox",
+"id": "enable_payment_button",
+"label": "Show dynamic checkout button",
+"info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+"default": true
+},
+{
+"type": "select",
+"id": "add_to_cart_button_size",
+"label": "Button size",
+"default": "small",
+"options": [
+{
+"value": "small",
+"label": "Small"
+},
+{
+"value": "large",
+"label": "Large"
+}
+]
+},
+{
+"type": "header",
+"content": "Media",
+"info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
+},
+{
+"type": "select",
+"id": "media_layout",
+"label": "Gallery layout",
+"default": "stacked",
+"options": [
+{
+"value": "stacked",
+"label": "Stacked"
+},
+{
+"value": "thumbnails",
+"label": "Thumbnails"
+}
+]
+},
+{
+"type": "checkbox",
+"id": "enable_image_zoom",
+"label": "Enable image zoom"
+},
+{
+"type": "checkbox",
+"id": "enable_video_looping",
+"label": "Enable video looping",
+"default": false
+}
+]
+}
+{% endschema %}

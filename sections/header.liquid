@@ -1,0 +1,51 @@
+
+<nav class="navbar navbar-expand-sm bg-yellow">
+  <div class="row">
+    <a href="#">
+      <img src="{{ section.settings.logo | img_url: '100x' }}" alt="{{ section.settings.alt }}" />
+    </a>
+    <div class="first">
+      <ul>
+        {% for link in linklists.product-page-menu.links %}
+        <li class="nav-item">
+          <a href="{{ link.url }}" class="c_nav">{{ link.title | escape }}</a>
+        </li>
+        {% endfor %}
+        {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <li class="nav-item">
+            <a class="btn btn-link" href="/account">{{ customer.first_name }}</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="btn btn-link" href="/login"><span class="fas fa-user-circle"></span></a>
+          </li>
+        {% endif %}
+        {% endif %}
+        <li class="nav-item">
+          <a class="btn btn-link" href="/cart"><span class="fas fa-shopping-bag"></span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% schema %}
+{ "name": "Header",
+"settings":
+[
+{
+"type": "image_picker",
+"id":"logo",
+"label": "Logo"
+},
+{ "type": "range",
+"id": "logo_max_width",
+"label":"Custom logo width",
+"min": 50,
+"max": 260,
+"step": 5,
+"unit": "px",
+"default":180 }
+
+] }
+{% endschema %}

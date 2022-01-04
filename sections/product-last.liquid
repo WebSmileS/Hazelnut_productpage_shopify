@@ -1,0 +1,49 @@
+<div class="text-center" style="background-color: #fcf4e5">
+    <img src="{{ section.settings.main_image | img_url:'500x' }}">
+</div>
+<div class="text-center" style="background-color: #F8F0DE">
+    <p id="r">{{ section.settings.mail_text }}</p>
+    <p id="t">{{ section.settings.middle_title }}</p>
+    <form class="text-center">
+        <div class="input-group">
+            <input type="mail" class="input_css" placeholder="Email address">
+            <div>
+                <button class="btn btn-gam" type="submit">Subscribe</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% schema %}
+{
+"name":"Customize",
+"settings":[
+{
+"type":"header",
+"content":"main_image"
+},
+
+{
+"type":"image_picker",
+"id":"main_image",
+"label":"Choose Image"
+},
+{
+"type":"header",
+"content":"mail"
+},
+
+{
+"type":"text",
+"id":"mail_text",
+"label":"Title"
+},
+
+{
+"type":"text",
+"id":"middle_title",
+"label":"Middle title"
+}
+]
+}
+{% endschema %}
